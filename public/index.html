@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Etec | Oficina</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script defer src="main.js"></script>
+</head>
+<body>
+    <form>
+        <h1>Comunicação em Tempo Real com Socket.io e Node.js</h1>
+        <label for="name">Digite seu Nome para começar:</label>
+        <input type="text" id="name" name="name" required>
+        <input type="submit" value="Entrar">
+    </form>
+    <script>
+        document.querySelector("form").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const name = document.querySelector("#name").value.trim();
+            if (name) {
+                window.location.href = `../chat?username=${encodeURIComponent(name)}`;
+            } else {
+                alert('Por favor, insira seu nome.');
+            }
+        });
+    </script>
+</body>
+</html>
