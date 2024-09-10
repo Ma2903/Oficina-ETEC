@@ -17,19 +17,31 @@
             <input type="text" id="message" placeholder="Digite sua mensagem">
             <input type="submit" value="Enviar" onclick="SendMessage()">
         </section>
+        <audio id="audio" style="display: none;"></audio>
     </main>
     <script>
         const socket = io();
-
+        
         const queryString = window.location.search
         const params = new URLSearchParams(queryString);
         const UserName = params.get("username");
+        
+        function playSound() {
+            const audio = document.getElementById("audio");
+            audio.src = "./../notification.mp3"; // Replace "path/to/sound.mp3" with the actual path to your sound file
+            audio.play();
+        }
 
         addEventListener("keydown",(e)=>{
            if (e.key == "Enter") {
                 SendMessage();
            }
         })
+        
+        function SendMessage(){
+
+        }
+
     </script>
 </body>
 </html>
