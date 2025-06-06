@@ -20,12 +20,12 @@ Este repositório contém um projeto demonstrativo de comunicação em tempo rea
 2. **Instalar as dependências:**
 
     ```bash
-  npm install
+     npm install
 
 3. **Iniciar o servidor:**
 
     ```bash
-  node index.js
+     npm run dev
 
 ## 🌐 Acessar a aplicação:
 
