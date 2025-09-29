@@ -21,11 +21,11 @@
     </main>
     <script>
         const socket = io();
-        
+
         const queryString = window.location.search
         const params = new URLSearchParams(queryString);
         const UserName = params.get("username");
-        
+
         function playSound() {
             const audio = document.getElementById("audio");
             audio.src = "./../notification.mp3"; // Replace "path/to/sound.mp3" with the actual path to your sound file
@@ -37,11 +37,29 @@
                 SendMessage();
            }
         })
+
+        // Abaixo 
+
         
+        socket.on("MessagemRecebida", (data)=>{
+            if (UserName == data.userName) {
+                document.querySelector(".messages").innerHTML+= `<p class="currentUser"> <span> ${data.userName} </span> ${data.message} </p>`;
+            } else {
+                document.querySelector(".messages").innerHTML+= `<p> <span> ${data.userName} </span> ${data.message} </p>`;
+                playSound();
+            }
+
+            document.querySelector(".messages").scrollTop = document.querySelector(".messages").scrollHeight;
+        });
+
         function SendMessage(){
-
+            const data = {
+                userName:UserName,
+                message:document.querySelector("#message").value
+            }
+            socket.emit('SendMessage', data);
+            document.querySelector('#message').value = "";
         }
-
     </script>
 </body>
 </html>
